@@ -1,17 +1,9 @@
 from dataclasses import dataclass
-from typing import Literal
 
 @dataclass
 class ModelConfig:
     image_size: int
-    in_image_depth: int
-    nb_blocks: int
-    block_type: Literal['basic', 'resnet']
-    padding: str
-    nb_initial_filters: int
-    initializer: str
     use_batchnorm: bool
-    use_dropout: bool
     load_from_checkpoint: bool
 
     def __post_init__(self):
