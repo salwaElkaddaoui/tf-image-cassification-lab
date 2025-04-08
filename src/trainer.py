@@ -17,7 +17,8 @@ class Trainer:
     def train(self, train_data,  val_data, epochs):
         self.model.compile(optimizer = self.optimizer, loss='SparseCategoricalCrossentropy')
         self.model.fit(train_data, validation_data=val_data, 
-                      epochs=epochs, callbacks=[self.callbacks])
+                      epochs=epochs, callbacks=[self.callbacks]
+                      )
     
 @hydra.main(version_base=None, config_path="../config", config_name="config")
 def main(cfg: Config):

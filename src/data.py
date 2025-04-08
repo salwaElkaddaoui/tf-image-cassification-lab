@@ -22,7 +22,7 @@ class DataLoader:
             tf.int32
         )
         label = tf.reshape(label_idx, ()) 
-        return image, tf.constant(0, tf.int32)
+        return image, label
     
     def preprocess(self, image: tf.Tensor, label: tf.Tensor) -> tuple[tf.Tensor, tf.Tensor]:
         image = tf.image.resize(image, [self.img_size, self.img_size], method='bilinear')
