@@ -75,7 +75,7 @@ class DataLoader:
         if training:
             return dataset.shuffle(1000, reshuffle_each_iteration=True).batch(self.batch_size).prefetch(tf.data.AUTOTUNE)
         else:
-            return dataset.batch(self.batch_size).prefetch(tf.data.AUTOTUNE)
+            return dataset.batch(self.batch_size).cache().prefetch(tf.data.AUTOTUNE)
         
         
     @property
