@@ -73,9 +73,9 @@ class DataLoader:
             dataset = dataset.map(self.augment, num_parallel_calls=tf.data.AUTOTUNE)
         dataset = dataset.map(self.preprocess, num_parallel_calls=tf.data.AUTOTUNE)
         if training:
-            return dataset.shuffle(1000, reshuffle_each_iteration=True).batch(self.batch_size).prefetch(tf.data.AUTOTUNE)
+            return dataset.shuffle(1000, reshuffle_each_iteration=True).batch(self.batch_size, drop_remainder=True).prefetch(tf.data.AUTOTUNE)
         else:
-            return dataset.batch(self.batch_size).cache().prefetch(tf.data.AUTOTUNE)
+            return dataset.batch(self.batch_size, drop_remainder=True).cache().prefetch(tf.data.AUTOTUNE)
         
         
     @property
